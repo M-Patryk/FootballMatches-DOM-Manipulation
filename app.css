@@ -11,8 +11,9 @@ body{
     margin: 2em;
 }
 table{
+    background-color: rgb(170, 187, 204);
     border: 1px solid black;
-    padding: 0.3em;
+    padding: 1em;
 }
 table td{
     padding: 0.4em;

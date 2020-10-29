@@ -294,7 +294,7 @@ const games = [
 		}
 	}
 ];
-//Dla pogladu
+// Preview of object
 
 // {
 //     homeTeam: {
@@ -322,6 +322,7 @@ const makeList = (gamesList, favourite) => {
 		td.innerHTML = getMatches(game);
 		tdScore.innerHTML = getScore(game)
 
+		//I WANT THIS "IF" STATEMENT TO BE A SEPARATE FUNCTION
 		if (checkWinner(game, favourite)) {
 			td.classList.add('win');
 			tdScore.classList.add('win')

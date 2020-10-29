@@ -2,8 +2,20 @@
     background-color: rgb(37, 161, 37);
 }
 .loss{
-    background-color: rgb(126, 39, 39);
+    background-color: rgb(221, 65, 65);
 }
 .draw{
     background-color: sandybrown;
+}
+body{
+    margin: 2em;
+}
+table{
+    border: 1px solid black;
+    padding: 0.3em;
+}
+table td{
+    padding: 0.4em;
+    text-align: center;
+    border: 1px solid black;
 }

@@ -324,12 +324,15 @@ const makeList = (gamesList, favourite) => {
 
 		if (checkWinner(game, favourite)) {
 			td.classList.add('win');
+			tdScore.classList.add('win')
 		
 		} else {
 			td.classList.add('loss');
+			tdScore.classList.add('loss')
 		}
 		if(game.homeTeam.isDraw){
 			td.classList.add('draw')
+			tdScore.classList.add('draw')
 		}
 		
 		tableRow.append(td);

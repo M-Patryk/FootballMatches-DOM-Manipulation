@@ -315,9 +315,12 @@ const makeList = (gamesList, favourite) => {
 	const table = document.querySelector('table')
 	for (let game of gamesList) {
 		const tableRow = table.insertRow();
-		const td = document.createElement('td');
 
-		td.innerHTML = getInfo(game);
+		const td = document.createElement('td');
+		const tdScore = document.createElement('td')
+
+		td.innerHTML = getMatches(game);
+		tdScore.innerHTML = getScore(game)
 
 		if (checkWinner(game, favourite)) {
 			td.classList.add('win');
@@ -328,18 +331,24 @@ const makeList = (gamesList, favourite) => {
 		if(game.homeTeam.isDraw){
 			td.classList.add('draw')
 		}
-
+		
 		tableRow.append(td);
+		tableRow.append(tdScore)
 	}
 	return table;
 };
 
 //function that gets info and prints it
-const getInfo = ({ homeTeam, awayTeam }) => {
+const getMatches = ({ homeTeam, awayTeam }) => {
 	const { name: nameHome, scored: scoreHome } = homeTeam;
 	const { name: nameAway, scored: scoreAway } = awayTeam;
 
 	const teamNames = `${nameHome} vs ${nameAway}`;
+	return `${teamNames} `;
+};
+const getScore = ({ homeTeam, awayTeam }) => {
+	const { name: nameHome, scored: scoreHome } = homeTeam;
+	const { name: nameAway, scored: scoreAway } = awayTeam;
 	let teamScores;
 	if (homeTeam.scored > awayTeam.scored) {
 		teamScores = `<b>${scoreHome}</b> - ${scoreAway}`;
@@ -348,10 +357,8 @@ const getInfo = ({ homeTeam, awayTeam }) => {
 	} else {
 		teamScores = `<b>${scoreHome}</b> - <b>${scoreAway}</b>`;
 	}
-	// const teamScores = `${scoreHome} - ${scoreAway}`
-	return `${teamNames} ${teamScores}`;
-};
-
+	return `${teamScores}`
+}
 const checkWinner = ({ homeTeam, awayTeam }, favourite) => {
 	const winner = homeTeam.name === favourite ? homeTeam : awayTeam
 	return winner.isWinner;

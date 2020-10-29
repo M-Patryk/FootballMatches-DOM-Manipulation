@@ -312,25 +312,26 @@ const games = [
 // }
 
 const makeList = (gamesList, favourite) => {
-	const parentUl = document.createElement('ul');
+	const table = document.querySelector('table')
 	for (let game of gamesList) {
-		const li = document.createElement('li');
+		const tableRow = table.insertRow();
+		const td = document.createElement('td');
 
-		li.innerHTML = getInfo(game);
-		console.log(checkWinner(game, favourite));
+		td.innerHTML = getInfo(game);
+
 		if (checkWinner(game, favourite)) {
-			li.classList.add('win');
+			td.classList.add('win');
 		
 		} else {
-			li.classList.add('loss');
+			td.classList.add('loss');
 		}
 		if(game.homeTeam.isDraw){
-			li.classList.add('draw')
+			td.classList.add('draw')
 		}
 
-		parentUl.append(li);
+		tableRow.append(td);
 	}
-	return parentUl;
+	return table;
 };
 
 //function that gets info and prints it

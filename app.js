@@ -322,25 +322,28 @@ const makeList = (gamesList, favourite) => {
 		td.innerHTML = getMatches(game);
 		tdScore.innerHTML = getScore(game)
 
-		//I WANT THIS "IF" STATEMENT TO BE A SEPARATE FUNCTION
-		if (checkWinner(game, favourite)) {
-			td.classList.add('win');
-			tdScore.classList.add('win')
-		
-		} else {
-			td.classList.add('loss');
-			tdScore.classList.add('loss')
-		}
-		if(game.homeTeam.isDraw){
-			td.classList.add('draw')
-			tdScore.classList.add('draw')
-		}
-		
+		getColor(game, favourite, td, tdScore)
+
 		tableRow.append(td);
 		tableRow.append(tdScore)
 	}
 	return table;
 };
+
+const getColor = (game, favourite, td, tdScore) => {
+	if(game.homeTeam.isDraw){
+		td.classList.add('draw')
+		tdScore.classList.add('draw')
+	}
+	else if (checkWinner(game, favourite)) {
+		td.classList.add('win'),
+		tdScore.classList.add('win')
+	
+	} else {
+		td.classList.add('loss'),
+		tdScore.classList.add('loss')
+	}
+}
 
 //function that gets info and prints it
 const getMatches = ({ homeTeam, awayTeam }) => {
